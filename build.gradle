@@ -12,7 +12,6 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
 
     // https://mvnrepository.com/artifact/org.wildfly.bom/wildfly-jakartaee8-with-tools-builder
     compile group: 'org.wildfly.bom', name: 'wildfly-jakartaee8-with-tools-builder', version: '21.0.1.Final', ext: 'pom'
@@ -26,6 +25,11 @@ dependencies {
     // https://mvnrepository.com/artifact/org.jboss/jboss-ejb-client
     compile group: 'org.jboss', name: 'jboss-ejb-client', version: '4.0.36.Final'
 
-    compile files( "${project.projectDir}/libs/TestEJBShare.jar")
+    // https://mvnrepository.com/artifact/javax.validation/validation-api
+    compile group: 'javax.validation', name: 'validation-api', version: '2.0.0.Final'
 
+}
+
+artifacts {
+    archives jar
 }

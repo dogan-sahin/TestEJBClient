@@ -1,5 +1,3 @@
-
-
 import ejb.EJBTestRemote;
 
 import javax.naming.Context;
@@ -14,19 +12,12 @@ public class Main {
             Properties props = new Properties();
 
             props.put(Context.INITIAL_CONTEXT_FACTORY, "org.wildfly.naming.client.WildFlyInitialContextFactory");
-            props.put(Context.PROVIDER_URL, "http-remoting://<host-address>:8080/");
-
-            /*
-            If the wildfly-server is running on a remote host, we have to create a
-            Wildfly Application-User on host -> $WILDFLY_HOME/add-user.sh
-            and provide the credentials of the created user as below
-            */
-            props.put(Context.SECURITY_PRINCIPAL, "username");
-            props.put(Context.SECURITY_CREDENTIALS, "password");
+            props.put(Context.PROVIDER_URL, "http-remoting://localhost:8080");
 
             Context context = new InitialContext(props);
-            EJBTestRemote etr = (EJBTestRemote) context.lookup("ejb:/TestEJB/EJBTest!ejb.EJBTestRemote");
-            System.out.println(etr.getName("Team A"));
+
+            EJBTestRemote etr = (EJBTestRemote)context.lookup("ejb:/TestEJB-1.0-SNAPSHOT/EJBTest!ejb.EJBTestRemote");
+            System.out.println(etr.getName("Dokksen"));
 
         } catch (NamingException ex) {
             ex.printStackTrace();
